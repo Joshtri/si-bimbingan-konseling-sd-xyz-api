@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model User{
+  id_user      Int      @id @default(autoincrement())
+  email   String   @unique
+  username    String?
+  password    String? @unique
+
+  Counselling Counselling[]
+}
+
+model Class {
+  id_class    Int      @id @default(autoincrement())
+  class_name  String
+  Student Student[] // One-to-many relationship with Student
+  Counselling Counselling[] // One-to-many relationship with counselling
+
+}
+
+model Student {
+  id_student    Int      @id @default(autoincrement())
+  name          String
+  birthplace    String
+  date_birth    DateTime
+  gender        String
+  religion      String
+  address       String
+  number_phone  String
+
+  class Class   @relation(fields: [classId], references: [id_class])
+  classId       Int
+
+
+  Counselling Counselling[]
+}
+
+
+model Counselling{
+  id_counselling Int @id @default(autoincrement())
+  counselling_date DateTime
+  counselling_note String
+  solution String
+
+
+  class Class @relation(fields: [classId], references: [id_class])
+  user User @relation(fields: [userId], references: [id_user])
+  student Student @relation(fields: [studentId], references: [id_student])
+  studentId Int
+  userId Int
+  classId Int
+
+
+
+
+
+}
