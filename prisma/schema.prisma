@@ -35,6 +35,7 @@ model Class {
 model Student {
   id_student    Int      @id @default(autoincrement())
   name          String
+  nis String 
   birthplace    String
   date_birth    DateTime
   gender        String
