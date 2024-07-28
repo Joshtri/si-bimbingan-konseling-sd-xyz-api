@@ -3,7 +3,6 @@ import cors from 'cors';
 import { config } from "dotenv";
 import session from "express-session";
 import db from "./config/dbConfig.js";
-import bodyParser from "body-parser";
 
 import classRoute from "./routes/class.route.js";
 import userRoute from "./routes/user.route.js";
