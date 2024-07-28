@@ -1,0 +1,12 @@
+### Create a new user
+POST http://localhost:4000/api/user
+Content-Type: application/json
+
+{
+    "username": "johndoe11",
+    "email": "johndoe@gmail.com",
+    "password": "password12344",
+    "role": "admin",
+    "confPassword": "password12344"
+
+}
