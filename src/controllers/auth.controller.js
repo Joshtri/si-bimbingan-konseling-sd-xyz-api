@@ -24,9 +24,25 @@ export const login = async (req, res) =>{
 }
 
 
-// export const logOut = (req, res) =>{
-//     req.session.destroy((err)=>{
-//         if(err) return res.status(400).json({msg: "Tidak dapat logout"});
-//         res.status(200).json({msg: "Anda telah logout"});
-//     });
-// }
+export const Me = async (req, res) =>{
+    if(!req.session.userId){
+        return res.status(401).json({msg: "Mohon login ke akun Anda!"});
+    }
+    const user = await User.findOne({
+        attributes:['uuid','username','email','role'],
+        where: {
+            uuid: req.session.userId
+        }
+    });
+    if(!user) return res.status(404).json({msg: "User tidak ditemukan"});
+    res.status(200).json(user);
+}
+
+
+
+export const logOut = (req, res) =>{
+    req.session.destroy((err)=>{
+        if(err) return res.status(400).json({msg: "Tidak dapat logout"});
+        res.status(200).json({msg: "Anda telah logout"});
+    });
+}

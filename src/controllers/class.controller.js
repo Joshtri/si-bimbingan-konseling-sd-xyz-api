@@ -20,6 +20,18 @@ export const createClass = async (req, res) => {
   }
 };
 
+
+export const deleteClass = async(req,res)=>{
+  try {
+    const {id_class} = req.params;
+    const deletedClass = await classServices.removeClass(id_class)
+    res.status(200).json(deletedClass);
+
+  } catch (error) {
+    throw error; 
+  }
+};
+
 // export const deleteClass = async (req, res) => {
 //   try {
 //     const { id_class } = req.params;

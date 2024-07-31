@@ -20,14 +20,14 @@ export const addClass = async (classData) => {
   }
 };
 
-// export const removeClass = async (id_class) => {
-//   try {
-//     const deletedClass = await deleteClass(id_class);
-//     return deletedClass;
-//   } catch (error) {
-//     throw new Error('Error deleting class: ' + error.message);
-//   }
-// };
+export const removeClass = async (id_class) => {
+  try {
+    const deletedClass = await classRepository.deleteClass(id_class);
+    return deletedClass;
+  } catch (error) {
+    throw new Error('Error deleting class: ' + error.message);
+  }
+};
 
 // export const getClassCount = async () => {
 //   try {

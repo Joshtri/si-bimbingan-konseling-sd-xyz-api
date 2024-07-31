@@ -22,6 +22,14 @@ export const createClass = async(classData)=>{
     }
 };
 
+export const deleteClass = async(id_class)=>{
+    try {
+        return await Class.destroy(id_class);
+    } catch (error) {
+        throw error;
+    }
+}
+
 // export const deleteClass = async(id_class)=>{
 //     try {
 //         return await prisma.class.delete({
