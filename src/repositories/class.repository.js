@@ -24,23 +24,16 @@ export const createClass = async(classData)=>{
 
 export const deleteClass = async(id_class)=>{
     try {
-        return await Class.destroy(id_class);
+        return await Class.destroy({ where:{
+                id_class
+            }
+        });
     } catch (error) {
         throw error;
     }
 }
 
-// export const deleteClass = async(id_class)=>{
-//     try {
-//         return await prisma.class.delete({
-//             where:{
-//                 id_class
-//             }
-//         });
-//     } catch (error) {
-//         throw error;
-//     }
-// }
+
 
 // export const getTotalClass = async()=>{
 //     try {

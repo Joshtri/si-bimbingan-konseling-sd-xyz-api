@@ -18,3 +18,13 @@ export const addStudent = async (studentData) => {
     throw new Error('Error creating student: ' + error.message);
   }
 };
+
+export const getById = async(id_student)=>{
+  try {
+    const student = await studentRepository.getStudentById(id_student)
+    return student
+  } catch (error) {
+    console.log(error);
+    throw new Error('Errror creating')
+  }
+}

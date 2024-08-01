@@ -17,3 +17,12 @@ export const createStudent = async(studentClass)=>{
         throw error;
     }
 }
+
+
+export const getStudentById = async(id_student)=>{
+    try {
+        return await Student.findByPk(id_student)
+    } catch (error) {
+        throw error;
+    }
+}
