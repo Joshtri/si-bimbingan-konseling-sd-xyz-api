@@ -21,7 +21,16 @@ const Counselling = db.define("Counselling",{
       allowNull: false,
     },
 
+    student_problem:{
+      type: DataTypes.STRING,
+      allowNull:false
+    },
+
     solution: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    penalty: {
       type: DataTypes.STRING,
       allowNull: false,
     },
