@@ -19,6 +19,15 @@ export const getUser = async()=>{
 }
 
 
+export const getTotalUser = async()=>{
+    try {
+        return await User.count();
+    } catch (error) {
+        throw error;
+    }
+}
+
+
 // import { PrismaClient } from "@prisma/client";
 // const prisma = new PrismaClient();
 

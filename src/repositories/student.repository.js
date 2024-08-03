@@ -26,3 +26,11 @@ export const getStudentById = async(id_student)=>{
         throw error;
     }
 }
+
+export const getTotalStudent = async()=>{
+    try {
+        return await Student.count();
+    } catch (error) {
+        throw error;
+    }
+}

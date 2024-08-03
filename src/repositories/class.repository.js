@@ -1,6 +1,3 @@
-// import { PrismaClient } from "@prisma/client";
-// const prisma = new PrismaClient();
-
 import Class from "../models/class.model.js";
 
 export const getClass = async()=>{
@@ -35,13 +32,13 @@ export const deleteClass = async(id_class)=>{
 
 
 
-// export const getTotalClass = async()=>{
-//     try {
-//         const totalClass = await prisma.class.count();
+export const getTotalClass = async()=>{
+    try {
+        const totalClass = await Class.count();
 
-//         return totalClass;
-//     } catch (error) {
-//         throw error;
-//     }
+        return totalClass;
+    } catch (error) {
+        throw error;
+    }
     
-// };
+};

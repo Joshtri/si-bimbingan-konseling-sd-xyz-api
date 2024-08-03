@@ -73,7 +73,7 @@ export default Counselling;
 // Singkronisasi dengan basis data
 (async () => {
   try {
-      await db.sync();
+      await db.sync({alter:true});
       console.log("counselling table has been created.");
   } catch (error) {
       console.error("Unable to create the table:", error);
