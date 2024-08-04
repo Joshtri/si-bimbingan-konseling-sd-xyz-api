@@ -1,9 +1,17 @@
+import Class from '../models/class.model.js';
 import Student from '../models/student.model.js';
 
 
 export const getStudent = async()=>{
     try {
-        return await Student.findAll();
+        return await Student.findAll({
+            include:[
+                {
+                    model:Class,
+                    attributes:['class_name']
+                }
+            ]
+        });
     } catch (error) {
         throw error;
     }

@@ -3,7 +3,7 @@ POST http://localhost:4000/api/user
 Content-Type: application/json
 
 {
-    "username": "johndoe11",
+    "username": "johndoe11",    
     "email": "yos@gmail.com",
     "password": "123",
     "role": "admin",
