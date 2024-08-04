@@ -38,3 +38,16 @@ export const createCounselling = async(counsellingData)=>{
     }
 }
 
+
+
+export const deleteCounselling = async(id_counselling)=>{
+    try {
+        return await Counselling.destroy({
+            where:{
+                id_counselling
+            }
+        });
+    } catch (error) {
+        throw error;
+    }
+};

@@ -1,3 +1,4 @@
+import { getTotalStudent } from '../repositories/student.repository.js';
 import * as studentServices from '../services/student.services.js'
 
 export const getStudents = async (req, res) => {
@@ -25,5 +26,15 @@ export const getStudentById = async(req,res)=>{
     res.status(200).json(student);
   } catch (error) {
     res.status(500).json({message:error.message});
+  }
+}
+
+export const getTotal = async(req,res)=>{
+  try {
+      const totalStudents = await getTotalStudent();
+      res.json(totalStudents);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
   }
 }

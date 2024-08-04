@@ -17,3 +17,15 @@ export const createCounselling = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+
+export const deleteCounselling = async(req,res)=>{
+  try {
+    const {id_counselling} = req.params;
+    const deletedCounselling = await counsellingServices.removeCounselling(id_counselling);
+    res.status(200).json(deletedCounselling);
+    
+  } catch (error) {
+    throw error;
+  }
+}

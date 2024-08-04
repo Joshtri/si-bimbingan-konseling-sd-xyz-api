@@ -1,5 +1,6 @@
 // import { getAllClasses, addClass, removeClass, getClassCount } from '../services/class.services.js';
 
+import { getTotalClass } from '../repositories/class.repository.js';
 import * as classServices from '../services/class.services.js'
 
 export const getClasses = async (req, res) => {
@@ -42,11 +43,12 @@ export const deleteClass = async(req,res)=>{
 //   }
 // };
 
-// export const getTotalClasses = async (req, res) => {
-//   try {
-//     const totalClasses = await getClassCount();
-//     res.status(200).json({ total: totalClasses });
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
+export const getTotal = async (req, res) => {
+  try {
+    const totalClass = await getTotalClass();
+    res.status(200).json(totalClass);
+} catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+}
+};

@@ -11,3 +11,7 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:4000/api/class/1
+
+
+###
+GET  http://localhost:4000/api/total_class
