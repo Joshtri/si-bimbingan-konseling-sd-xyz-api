@@ -1,5 +1,6 @@
 import argon2 from "argon2";
 import { addUser, getAllUser } from '../services/user.services.js';
+import { getTotalUser } from "../repositories/user.repository.js";
 
 export const createUser = async(req, res) =>{
     const { username, email, password, confPassword, role } = req.body;
@@ -25,3 +26,13 @@ export const createUser = async(req, res) =>{
         res.status(400).json({msg: error.message});
     }
 }
+
+export const getTotal = async(req,res)=>{
+    try {
+        const totalUsers = await getTotalUser();
+        res.status(200).json(totalUsers);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+  }

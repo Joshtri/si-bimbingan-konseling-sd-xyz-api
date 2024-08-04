@@ -32,7 +32,7 @@ export const getStudentById = async(req,res)=>{
 export const getTotal = async(req,res)=>{
   try {
       const totalStudents = await getTotalStudent();
-      res.json(totalStudents);
+      res.status(200).json(totalStudents);
   } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
