@@ -65,7 +65,7 @@ Counselling.belongsTo(User, {foreignKey:'userId'})
 
 
 Student.hasMany(Counselling, {foreignKey:'studentId'})
-Counselling.belongsTo(Student, {foreignKey:'userId'})
+Counselling.belongsTo(Student, {foreignKey:'studentId'})
 
 export default Counselling;
 
