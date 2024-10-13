@@ -1,0 +1,14 @@
+### Create a new PelanggaranSiswa
+POST http://localhost:3000/pelanggaran-siswa
+Content-Type: application/json
+
+{
+  "siswaId": 1,
+  "jenisPelanggaranId": 2,
+  "tanggal_pelanggaran": "2024-10-05",
+  "tanggal_konseling": "2024-10-06",
+  "status_konseling": "belum",
+  "tindak_lanjut": "Needs further observation",
+  "konselor": "Mr. John Doe",
+  "catatan_konseling": "Initial counseling session completed"
+}

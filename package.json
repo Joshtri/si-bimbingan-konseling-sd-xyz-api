@@ -5,21 +5,26 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "argon2": "^0.40.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "eslint": "^9.11.1",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
-    "mysql2": "^3.10.3",
+    "method-override": "^3.0.0",
+    "mysql2": "^3.11.3",
     "path": "^0.12.7",
     "sequelize": "^6.37.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "globals": "^15.9.0",
     "nodemon": "^3.1.4"
   }
 }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('partials/head');%>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<body>
+    <%-include('partials/header');%>
+      <style>
+        .custom-table td,
+        .custom-table th {
+            font-size: 14px; /* Adjust the font size as needed */
+        }
+
+        #current-time {
+          font-size: 0.875rem; /* Sesuaikan ukuran font sesuai kebutuhan */
+          color: #000; /* Sesuaikan warna teks sesuai kebutuhan */
+        }
+      </style>
+
+    <div class="container mt-4">
+        <%-include('components/breadcrumbs'); %>
+        <hr>
+
+        <div class="d-flex justify-content-between">
+            <div>
+                <a class="btn btn-sm btn-warning" href="/adm/data/add-kelas" >Tambah Data</a>
+            </div>
+            <input class="form-control w-25" type="text" id="search-bar" placeholder="Cari...">
+        </div>
+
+
+    </div>
+
+
+    <div class="container mt-5">
+        <table class="table custom-table" id="data-table-view">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama Kelas</th>
+                <th scope="col">Kelas Kejuruan</th>
+                <th scope="col" class="text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            <% for(let i=0; i < kelasData.length ;i++) { %>
+              <tr>
+                <th scope="row"><%= i + 1%></th>
+                <td><%= kelasData[i].nama_kelas %></td>
+                <td><%= kelasData[i].kelas_kejuruan  %></td>
+                <td class="text-center">
+                    <a href="/adm/data/keluarga/<%=  %>" class="btn btn-light btn-sm"><i class="fa-regular fa-eye"></i></a>
+
+                    <a class="btn btn-light btn-sm" href="/adm/data/keluarga_edit/<%=  kelasData[i].id_kelas %>"><i class="fa-regular fa-pen-to-square"></i></a>
+
+
+                    <a class="btn btn-light btn-sm delete-btn" data-bs-toggle="tooltip" data-bs-title="Delete this data" data-id="<%= kelasData[i].id_kelas %>">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                </td>
+              </tr>
+
+              <% } %>
+
+            </tbody>
+        </table>
+        <div id="no-data-message" class="alert alert-danger rounded mt-3 text-center" style="display: none;">
+          Data tidak ditemukan<i class="mx-1 fs-5 fa-brands fa-searchengin fa-bounce"></i>
+        </div>
+
+
+
+
+    </div>
+
+
+        <!-- srcipt untuk delete data kbli -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var deleteButtons = document.querySelectorAll('.delete-btn');
+          var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+          var deleteForm = document.getElementById('deleteForm');
+          var deleteIdInput = document.getElementById('deleteId');
+
+          deleteButtons.forEach(function(button) {
+              button.addEventListener('click', function() {
+                  var id = this.getAttribute('data-id');
+                  deleteForm.setAttribute('action', '/adm/data/keluarga/' + id + '?_method=DELETE');
+                  deleteIdInput.value = id;
+                  deleteModal.show();
+              });
+          });
+
+          
+      });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="/js/tooltip.js"></script>
+    <script src="/js/features.js"></script>
+</body>
+</html> 
